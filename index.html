@@ -1,218 +1,248 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="icon" type="image/x-icon" href="https://d2543nuuc0wvdg.cloudfront.net/favicon.ico">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>landing page</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4ff;
-    margin: 0;
-    padding: 15px;
-    text-align: center;
-    line-height: 1.5;
-    color:#222;
-  }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> Landing Page</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Naya Blue aur Silver Theme */
+            --primary-glow: #007cf0;
+            --secondary-glow: #00dfd8;
+            --accent-gradient: linear-gradient(135deg, #e0e0e0, #ffffff, #a1a1a1, #ffffff, #bdbdbd);
+            --btn-gradient: linear-gradient(135deg, #007cf0, #00dfd8);
+        }
 
-  .logo {
-    width: 95px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 12px;
-    transition: transform 0.3s ease;
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  .logo:hover {
-    transform: scale(1.08);
-  }
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #020617; /* Deep Midnight Blue background */
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            overflow: hidden;
+            position: fixed;
+        }
 
-  h1 {
-    color:#0b5ed7;
-    font-size:1.7rem;
-    margin:8px 0;
-    line-height:1.3;
-    font-weight: 700;
-  }
+        /* --- BLURRY AURA ANIMATION --- */
+        .background-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
 
-  .tagline {
-    font-weight:600;
-    color:#444;
-    margin:5px 0;
-    font-size:1rem;
-  }
+        .blob {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: var(--primary-glow);
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
 
-  .highlight {
-    color:#28a745;
-    font-weight:bold;
-    font-size:1.05rem;
-    margin:6px 0;
-  }
+        .blob-1 { top: -10%; left: -10%; background: #0051ff; }
+        .blob-2 { bottom: -10%; right: -10%; background: #00dfd8; animation-duration: 25s; }
+        .blob-3 { top: 40%; left: 30%; width: 250px; height: 250px; background: #ffffff; opacity: 0.3; animation-duration: 15s; }
 
-  .community {
-    font-weight:600;
-    font-size:0.95rem;
-    margin:5px 0;
-    color:#555;
-  }
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(120px, 120px) scale(1.3); }
+        }
 
-  ul {
-    list-style:none;
-    padding-left:0;
-    display:inline-block;
-    text-align:left;
-    margin:14px 0;
-    max-width:330px;
-  }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
 
-  ul li {
-    margin:6px 0;
-    font-size:0.92rem;
-    color:#333;
-    line-height:1.35;
-  }
+        .logo-wrapper {
+            margin-bottom: 15px;
+        }
 
-  .timer {
-    font-size:1.15rem;
-    font-weight:bold;
-    color:red;
-    margin:14px 0;
-  }
+        .logo {
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            padding: 3px;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 25px rgba(0, 124, 240, 0.6);
+            animation: float 4s ease-in-out infinite;
+            margin: 0 auto;
+        }
 
-  .join-btn {
-    background:#0b5ed7;
-    color:#fff;
-    border:none;
-    padding:13px 28px;
-    border-radius:50px;
-    font-size:1rem;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-block;
-    margin:14px 0;
-    transition: background 0.3s ease;
-    animation: pulse 1.6s infinite;
-  }
+        .logo img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #020617;
+            display: block;
+        }
 
-  @keyframes pulse {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 7vw, 2.5rem);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            filter: drop-shadow(0 2px 10px rgba(255,255,255,0.2));
+        }
 
-  .join-btn:hover {
-    background:#084298;
-  }
+        .team-tag {
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            color: #00dfd8; /* Cyan color for accent */
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 223, 216, 0.5);
+        }
 
-  .footer {
-    margin:12px 0;
-    font-size:.88rem;
-    line-height:1.4;
-  }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 28px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
 
-  .footer b { font-weight:700; }
-  .footer a {
-    color:#0b5ed7;
-    text-decoration:none;
-  }
-  .footer a:hover { text-decoration:underline; }
+        .glass-panel p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
 
-  .disclaimer {
-    margin-top:18px;
-    font-size:0.75rem;
-    color:#666;
-    max-width:620px;
-    margin-left:auto;
-    margin-right:auto;
-    line-height:1.45;
-    padding:0 10px;
-  }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
 
-  /* 📱 Responsive Tweaks */
-  @media (max-width:480px) {
-    h1 { font-size:1.45rem; }
-    .highlight { font-size:1rem; }
-    ul li { font-size:0.87rem; }
-    .timer { font-size:1.05rem; }
-    .join-btn { font-size:0.95rem; padding:11px 22px; }
-  }
+        .stat-item b { color: #ffffff; font-size: 1.2rem; }
+        .stat-item p { font-size: 0.65rem; text-transform: uppercase; color: #00dfd8; opacity: 0.9; }
 
-  /* ⭐ Added Credit Line */
-  .credit {
-    margin-top: 18px;
-    text-align: center;
-    font-size: 14px;
-    color: #0b5ed7;
-    font-weight: 700;
-    opacity: 0.9;
-  }
-  .credit a {
-    color: #005ad7;
-    text-decoration: none;
-    font-weight: 800;
-  }
-  .credit a:hover { text-decoration: underline; }
+        .btn-telegram {
+            width: 100%;
+            max-width: 320px;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            background: var(--btn-gradient);
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0, 124, 240, 0.4);
+            animation: zoomPulse 2s infinite ease-in-out;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-</style>
+        @keyframes zoomPulse {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 124, 240, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 15px 40px rgba(0, 124, 240, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 124, 240, 0.4); }
+        }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
 
+        .footer {
+            margin-top: 25px;
+            font-size: 0.7rem;
+            opacity: 0.6;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
 
+        .agency-link {
+            color: #00dfd8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
-<a href="https://t.me/+tLDMKbT4q5xhODQ1">
-  <img src="https://thinkbigx.sbs/wp-content/uploads/2026/02/rochit.jpg" alt="Profile Logo" class="logo">
-</a>
+    <div class="background-wrapper">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-<h1>Rochit Singh Official Trader
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo">
+                <img src="https://thinkbigx.sbs/wp-content/uploads/2026/02/rochit.jpg" alt="Logo">
+            </div>
+        </div>
 
+      <h1>Trading Mastery Hub</h1>
+    <div class="team-tag">Free Educational Access</div>
 
+    <div class="glass-panel">
+        <p>Stop gambling and start trading. Learn the <b>Price Action</b> secrets used by big institutions to identify entries before they happen.</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <b>1:3+</b>
+                <p>Risk:Reward</p>
+            </div>
+            <div class="stat-item">
+                <b>LIVE</b>
+                <p>Webinars</p>
+            </div>
+            <div class="stat-item">
+                <b>BASIC</b>
+                <p>To Pro</p>
+            </div>
+        </div>
+    </div>
 
-</h1>
-<div class="tagline">Dedicated to Learning, Awareness & Smarter Classes</div>
-<div class="community">Join 80,960+ learners who are shaping their journey 🚀</div>
+        <a href="https://t.me/+tLDMKbT4q5xhODQ1" class="btn-telegram" id="redirect-btn">
+            JOIN TELEGRAM NOW
+        </a>
 
-<ul>
-  <li>📊 Learn how markets function in a simple & practical way</li>
- 
-</ul>
+        <div class="footer">
+            <span>✦ 18+ | TRADE RESPONSIBLY ✦</span>
+            <p style="margin-top: 10px;">Managed by <br> 
+                <a href="https://telegram.me/+TRlJl628l-FkMWE9" class="agency-link">NEXGROWW AGENCY</a>
+            </p>
+        </div>
+    </div>
 
-<div class="timer" id="timer">00 Min 05 Sec ⏳ Hurry Up!</div>
-
-<a href="https://t.me/+tLDMKbT4q5xhODQ1" class="join-btn">🚀 Join Free Learning Group</a>
-
-<div class="footer">
-  If you use <b>Telegram</b>, you can 
-  <a href="https://t.me/+tLDMKbT4q5xhODQ1">Join Our Group Instantly</a> 😍
-</div>
-
-<div class="disclaimer">
-  <b>Disclaimer:</b> We are not SEBI-registered advisors. All information shared is for educational purposes only...
-</div>
-
-<!-- ⭐ CREDIT LINE -->
-<div class="credit">
-  ads managed by  
-  <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank">@Nexgroww_agency</a>
-</div>
-
-<script>
-//  const timerEl = document.getElementById("timer");
- // let timeLeft = 5;
-//  let currentTime = timeLeft * 30;
-
-  const interval = setInterval(() => {
- //   let displayTime = Math.ceil(currentTime / 30); 
-    let min = String(Math.floor(displayTime / 60)).padStart(2,'0');
-    let sec = String(displayTime % 60).padStart(2,'0');
-   // timerEl.innerHTML = `${min} Min ${sec} Sec ⏳ Hurry Up!`;
-
-//    if(currentTime <= 0){
-      clearInterval(interval);
-    }
- //   currentTime--;
- //}, 100); 
-</script>
+   </script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -229,5 +259,6 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1252358870373641&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code --></body>
+<!-- End Meta Pixel Code -->
+    </body>
 </html>
